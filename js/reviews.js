@@ -8,7 +8,9 @@ function drawReviews(reviewSrc, columnWidth, gutter, limit = 2) {
   var next_page = 1;
 
   const $showMoreButton = jQuery("#show-more");
-  $showMoreButton.before('<div class="grid369"></div>');
+  $showMoreButton.before(
+    '<div class="grid369" style="margin: 0 auto; flex-wrap: wrap;"></div>'
+  );
   $showMoreButton.prop("disabled", false);
   $showMoreButton.css({
     display: "none",
@@ -112,7 +114,7 @@ function createItem(review, itemWidth, margin) {
                 }</span>
                 <div style="font-size: 13px; font-weight: bold; color: #f39c12;">${filledStars}${emptyStars}</div>
                 <span style="font-size: 12px;">${new Date(
-                  review.created_at
+                  review.last_name
                 ).toLocaleDateString()}</span>
                 <p style="margin: 0; margin-top: 4px;">${comment.text()}</p>
             </div>   
