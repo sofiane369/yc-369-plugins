@@ -65,10 +65,9 @@ function updateTotalReviews(totalReviews) {
   jQuery("li.general-count").attr("class", "general-reviews-count");
   jQuery("li.general-reviews-count").text(text);
   setTimeout(() => {
-    console.log("Updating total reviews ==>");
     jQuery("li.general-count").attr("class", "general-reviews-count");
     jQuery("li.general-reviews-count").text(text);
-  }, 10000);
+  }, 7000);
 }
 
 function loadReviews(
