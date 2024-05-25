@@ -72,7 +72,7 @@ function loadReviews(
   fetch(`${endpoint}?limit=${limit}&page=${page}`)
     .then((response) => response.json())
     .then((data) => {
-      $("li.general-count").attr('class', 'general-reviews-count');
+      jQuery("li.general-count").attr('class', 'general-reviews-count');
       if (data?.meta?.pagination?.total) {
         const text = `(${data.meta.pagination.total} التقييمات)`
         jQuery("li.general-reviews-count").text(text);
