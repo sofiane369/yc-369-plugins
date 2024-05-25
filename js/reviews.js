@@ -69,10 +69,10 @@ function loadReviews(
 ) {
   // Fetch data from the API
   const $grid = jQuery(".grid369");
+  jQuery("li.general-count").attr('class', 'general-reviews-count');
   fetch(`${endpoint}?limit=${limit}&page=${page}`)
     .then((response) => response.json())
     .then((data) => {
-      jQuery("li.general-count").attr('class', 'general-reviews-count');
       if (data?.meta?.pagination?.total) {
         const text = `(${data.meta.pagination.total} التقييمات)`
         jQuery("li.general-reviews-count").text(text);
