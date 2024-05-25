@@ -59,6 +59,16 @@ function drawReviews(reviewSrc, columnWidth, gutter, limit = 20) {
     $showMoreButton
   );
 }
+
+function updateTotalReviews(totalReviews) {
+  jQuery("li.general-count").attr("class", "general-reviews-count");
+  const text = `(${totalReviews} التقييمات)`;
+  jQuery("li.general-reviews-count").text(text);
+  setTimeout(() => {
+    jQuery("li.general-reviews-count").text(text);
+  }, 10000);
+}
+
 function loadReviews(
   endpoint,
   columnWidth,
@@ -69,13 +79,11 @@ function loadReviews(
 ) {
   // Fetch data from the API
   const $grid = jQuery(".grid369");
-  jQuery("li.general-count").attr('class', 'general-reviews-count');
   fetch(`${endpoint}?limit=${limit}&page=${page}`)
     .then((response) => response.json())
     .then((data) => {
       if (data?.meta?.pagination?.total) {
-        const text = `(${data.meta.pagination.total} التقييمات)`
-        jQuery("li.general-reviews-count").text(text);
+        updateTotalReviews(data.meta.pagination.total)
       }
       // Loop through the data array
       data.data.forEach((review) => {
