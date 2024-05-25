@@ -65,6 +65,7 @@ function updateTotalReviews(totalReviews) {
   const text = `(${totalReviews} التقييمات)`;
   jQuery("li.general-reviews-count").text(text);
   setTimeout(() => {
+    console.log("Updating total reviews");
     jQuery("li.general-reviews-count").text(text);
   }, 10000);
 }
