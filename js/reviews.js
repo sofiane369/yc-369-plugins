@@ -61,11 +61,12 @@ function drawReviews(reviewSrc, columnWidth, gutter, limit = 20) {
 }
 
 function updateTotalReviews(totalReviews) {
-  jQuery("li.general-count").attr("class", "general-reviews-count");
   const text = `(${totalReviews} التقييمات)`;
+  jQuery("li.general-count").attr("class", "general-reviews-count");
   jQuery("li.general-reviews-count").text(text);
   setTimeout(() => {
-    console.log("Updating total reviews");
+    console.log("Updating total reviews ==>");
+    jQuery("li.general-count").attr("class", "general-reviews-count");
     jQuery("li.general-reviews-count").text(text);
   }, 10000);
 }
