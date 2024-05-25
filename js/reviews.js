@@ -2,7 +2,7 @@ function cleanUp() {
   jQuery("#reviews-wrapper").remove();
 }
 
-function drawReviews(reviewSrc, columnWidth, gutter, limit = 2) {
+function drawReviews(reviewSrc, columnWidth, gutter, limit = 20) {
   cleanUp();
 
   var next_page = 1;
@@ -72,6 +72,11 @@ function loadReviews(
   fetch(`${endpoint}?limit=${limit}&page=${page}`)
     .then((response) => response.json())
     .then((data) => {
+
+      if (data?.meta?.pagination?.total) {
+        const text = `(${data.meta.pagination.total} التقييمات)`
+        jQuery("li.general-count").text(text);
+      }
       // Loop through the data array
       data.data.forEach((review) => {
         const $gridItem = createItem(review, columnWidth, gutter);
